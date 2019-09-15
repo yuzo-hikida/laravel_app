@@ -61,7 +61,7 @@ class TodoController extends Controller
 
         // $this->todo->title = 'こんにちは';
         // $this->todo->save();
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
         // dd($input);
     }
 
@@ -105,7 +105,7 @@ class TodoController extends Controller
         // dd($this->todo->find($id));//今保存されている指定したidのレコードが帰ってくる Todoオブジェクト
         // dd($this->todo->find($id)->fill($input));//ここでtitleに対して上書きしている
         $this->todo->find($id)->fill($input)->save();//更新を行う命令　UPDATE todos SET title = $input WHERE id = $id saveでtrueが帰ってきている $this->todo->find($id)の返り値のtodoインスタンスかたfillを呼んでる
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 
     /**
@@ -118,6 +118,6 @@ class TodoController extends Controller
     {
         //以下追記
         $this->todo->find($id)->delete();//削除命令 DELETE FROM todo WHERE id =$id
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 }
